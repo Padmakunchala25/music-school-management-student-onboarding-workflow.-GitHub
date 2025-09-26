@@ -1,0 +1,15 @@
+1. Core Challenge Goal
+
+A “lead” (interested student) comes in.
+
+They might book a trial class.
+
+They can then convert into an active student.
+
+They may have status changes later (paused, canceled, etc.).
+
+Different student types exist (adult, child, family).
+
+Business rules + integrations (Stripe for payments, SendGrid for email, Twilio for SMS, Zoom/Calendar for scheduling) are involved.
+
+The repo expects  to use Playwright + TypeScript, with good design (Page Object Model, helpers, test data factories).
