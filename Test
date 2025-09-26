@@ -1,0 +1,19 @@
+// tests/onboarding/adultOnboarding.spec.ts
+import { test, expect } from "@playwright/test";
+import { RegistrationPage } from "../../pages/RegistrationPage";
+import { createStudent } from "../../data/studentFactory";
+import { mockStripe } from "../../helpers/apiHelpers";
+
+test("Adult student can onboard from Lead → Trial → Active", async ({ page }) => {
+  const student = createStudent("adult");
+  const registrationPage = new RegistrationPage(page);
+
+  await mockStripe(page);
+  await registrationPage.navigate("/register");
+
+  await registrationPage.registerStudent(student.name, student.email, student.phone);
+
+  // Assertions
+  await expect(page.locator("text=Trial Scheduled")).toBeVisible();
+  await expect(page.locator("text=Status: Active")).toBeVisible();
+});
