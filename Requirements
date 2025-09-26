@@ -1,0 +1,43 @@
+Student types & flows
+
+Adult student: standalone onboarding.
+
+Child student: must be linked to a parent account.
+
+Family account: multiple students linked under one account.
+
+👉 Tests should cover each scenario (adult alone, child with parent, adding new child to an existing family).
+
+State transitions
+
+Lead → Trial → Active → Paused/Cancelled.
+
+You’ll want to assert correct state changes at each step.
+
+Example: after booking a trial, student should not yet be “active”. Only after payment & confirmation should they become active.
+
+Business rules
+
+Prevent duplicates (no two accounts with same email).
+
+Trial → Active transition requires payment.
+
+Cancellations might trigger emails/SMS.
+
+Integrations
+
+Stripe: validate that payment flow triggers.
+
+SendGrid: email notification sent.
+
+Twilio: SMS reminder goes out.
+
+Google Calendar/Zoom: trial/lesson scheduled correctly.
+
+Page Object Model: separate page selectors/actions from tests.
+
+Test data factories: generate unique emails, names, etc. for test runs.
+
+Helpers/utilities: for waits, assertions, API mocks.
+
+Config: environment URLs, credentials, API keys (never hard-coded).
