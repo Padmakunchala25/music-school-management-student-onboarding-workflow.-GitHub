@@ -1,0 +1,116 @@
+Test Case Design for Student Onboarding Flow
+1. Happy Path Scenarios (core business workflows)
+
+These prove the system works as expected under normal conditions.
+
+Adult Student Onboarding (Lead → Trial → Active)
+
+Steps: Register as a lead → Book trial → Complete payment → Become active.
+
+Rationale: Core journey for most students.
+
+Child Student Onboarding (linked to Parent Account)
+
+Steps: Parent registers → Adds child → Books trial for child → Converts to active.
+
+Rationale: Validates dependency rules for minors.
+
+Family Account Setup
+
+Steps: Parent registers → Adds multiple children → Each books trial/active status.
+
+Rationale: Multi-user account flow is common in schools.
+
+Cancellation Flow
+
+Steps: Active student cancels → Status changes → Email/SMS notifications sent.
+
+Rationale: Ensures correct state management & communication.
+
+Trial → Active transition with Payment
+
+Steps: Book trial → Attempt to activate → Complete payment → Status updates.
+
+Rationale: Validates integration with Stripe.
+
+2. Negative Scenarios (validation & error handling)
+
+These confirm the system prevents invalid actions.
+
+Duplicate Email Registration
+
+Try registering with an email already in use.
+
+Rationale: Prevents account conflicts.
+
+Child Account Without Parent
+
+Try registering a child directly without linking to a parent.
+
+Rationale: Enforces business rule for minors.
+
+Skipping Payment at Activation
+
+Try converting a trial student to active without completing payment.
+
+Rationale: Prevents revenue leakage.
+
+Invalid Contact Information
+
+Register with invalid email/phone (e.g. abc@, 12345).
+
+Rationale: Ensures data quality for communication.
+
+Unauthorized State Transition
+
+Try moving a student directly from Lead → Active (bypassing trial/payment).
+
+Rationale: Protects workflow integrity.
+
+3. Edge Cases (unusual but realistic conditions)
+
+These explore boundaries and special scenarios.
+
+Multiple Students on Same Payment Method
+
+Parent pays for several children in one transaction.
+
+Rationale: Tests handling of shared billing.
+
+Reactivating a Paused Student
+
+Pause → Reactivate → Verify state + notifications.
+
+Rationale: Common lifecycle edge.
+
+Time Zone Handling in Scheduling
+
+Book trial across different time zones.
+
+Rationale: Ensures correct calendar/Zoom sync.
+
+Notification Failures
+
+Simulate SendGrid/Twilio API failure → Verify retry/error handling.
+
+Rationale: Robustness against integration failures.
+
+Large Family Account
+
+Add many children (e.g. 10+) under one parent.
+
+Rationale: Stress test for family handling.
+
+Student Switching Accounts
+
+Child moves from one family account to another.
+
+Rationale: Data consistency in account transfers.
+
+✅ Coverage Rationale
+
+Happy paths → Prove system works for main workflows (adult, child, family, payment).
+
+Negative cases → Catch validation issues and business rule enforcement.
+
+Edge cases → Show robustness against unusual, high-risk, or integration-failure scenario
