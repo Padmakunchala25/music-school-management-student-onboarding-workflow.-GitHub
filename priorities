@@ -1,0 +1,25 @@
+✅ Must do (core flow)
+
+Onboard an adult student (lead → trial → active).
+
+Verify state transitions (lead → trial, trial → active).
+
+Ensure duplicate email handling.
+
+Ensure trial → active requires payment.
+
+✅ Nice to have (show depth)
+
+Add child student linked to parent.
+
+Add multiple students to family account.
+
+Cancellation → verify email/SMS sent.
+
+✅ Stretch (bonus points)
+
+Mock Stripe/SendGrid/Twilio calls with Playwright’s network intercept.
+
+Show proper cleanup strategy (delete/mask test users after run).
+
+Parametrize tests to cover multiple roles/student types.
