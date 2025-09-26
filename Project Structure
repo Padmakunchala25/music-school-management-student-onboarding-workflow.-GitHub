@@ -1,0 +1,35 @@
+automation-qa-challenge/
+│── playwright.config.ts          # Playwright test runner config
+│── package.json
+│── tsconfig.json
+│
+├── tests/                        # Test specs
+│   ├── onboarding/               # Feature folder
+│   │   ├── adultOnboarding.spec.ts
+│   │   ├── childOnboarding.spec.ts
+│   │   ├── familyOnboarding.spec.ts
+│   │   ├── cancellation.spec.ts
+│   │   └── stateTransitions.spec.ts
+│
+├── pages/                        # Page Object Models
+│   ├── BasePage.ts
+│   ├── LoginPage.ts
+│   ├── RegistrationPage.ts
+│   ├── DashboardPage.ts
+│   ├── PaymentPage.ts
+│   ├── SchedulingPage.ts
+│   └── NotificationsPage.ts
+│
+├── data/                         # Test data factories
+│   ├── studentFactory.ts
+│   ├── parentFactory.ts
+│   └── paymentFactory.ts
+│
+├── helpers/                      # Utilities
+│   ├── apiHelpers.ts             # Stripe/SendGrid/Twilio mocks
+│   ├── waitHelpers.ts
+│   ├── assertionHelpers.ts
+│   └── env.ts                    # Config loader
+│
+└── fixtures/                     # Playwright fixtures if needed
+    └── testFixtures.ts
